@@ -1,9 +1,6 @@
 <!-- Display Posts-->
 <div class="row post" *ngFor="let post of posts$">
-
-    <div class="col-md-1">
-        <app-vote-button [post] = "post"></app-vote-button>
-    </div>
+    <app-vote-button [post]="post"></app-vote-button>
     <!-- Section to Display Post Information-->
     <div class="col-md-11">
         <span class="subreddit-info">
@@ -16,17 +13,17 @@
             <a class="postname" href="{{post.url}}">{{post.postName}}</a>
         </div>
         <div>
-            <p class="post-text">{{post.description}}</p>
+            <p class="post-text" [innerHtml]="post.description"></p>
         </div>
         <hr />
         <span>
             <a class="btnCommments" role="button">
-                <fa-icon [icon]="faComments"></fa-icon>
-                Comments({{post.commentCount}})
+            <fa-icon [icon]="faComments"></fa-icon>
+            Comments({{post.commentCount}})
             </a>
-            <button class="login" (click)="goToPost(post.id)">
-                Read Post
+            <button class="login">
+            Read Post
             </button>
         </span>
     </div>
-</div>
+  </div>
